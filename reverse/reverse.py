@@ -45,3 +45,13 @@ class LinkedList:
             return None
         if self.head.get_next() is None:
             return node.get_value()
+        # change the direction of the pointers
+        # the prev next should now be this node's next
+        # this node's next will change to the prev node
+        while node is not None:
+            next_node = node.get_next()
+            node.set_next(prev)
+            node = next_node
+        
+            
+
