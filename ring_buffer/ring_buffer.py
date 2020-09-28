@@ -9,13 +9,10 @@ class RingBuffer:
         # appends the element to the tail
         # if the list isn't full, it adds the new tail and leaves the head alone
         # if the list is full:
-            # it replaces the head with the value
+            # it replaces the tail with the value
             # the head moves "up" one
-            # the tail becomes the new value
-        if self.head == self.tail:
-            self.buffer_list.append(item)
-            self.tail = (self.tail + 1) % self.capacity
-        elif len(self.buffer_list) < self.capacity:
+            # the new tail becomes the old head
+        if len(self.buffer_list) < self.capacity:
             self.buffer_list.append(item)
             self.tail = (self.tail + 1) % self.capacity
             if self.tail == self.head:
