@@ -1,6 +1,6 @@
 class RingBuffer:
     def __init__(self, capacity):
-        self.capacity = capacity + 1
+        self.capacity = capacity
         self.buffer_list = []
         self.head = 0
         self.tail = 0
@@ -21,9 +21,10 @@ class RingBuffer:
             if self.tail == self.head:
                 self.head += 1
         else:
+            self.buffer_list[self.tail] = item
             self.head = (self.head + 1) % self.capacity
             self.tail = (self.tail + 1) % self.capacity
-            self.buffer_list[self.tail] = item
 
     def get(self):
-        pass
+        return self.buffer_list
+        
