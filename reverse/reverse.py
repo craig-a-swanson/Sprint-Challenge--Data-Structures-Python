@@ -51,7 +51,10 @@ class LinkedList:
         while node is not None:
             next_node = node.get_next()
             node.set_next(prev)
+            prev = node
             node = next_node
+            if node:
+                self.head = node
         
             
 
